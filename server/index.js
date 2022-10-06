@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 //Database connection
 import ConnectDB from "./database/connection";
+import Auth from "./api/auth";
 
 dotenv.config();
 
@@ -17,6 +18,10 @@ app.get( '/', ( req, res ) =>
         message: "server is running"
     } );
 } );
+
+
+// /auth/signup
+app.use( "/auth", Auth );
 
 const PORT = 4000;
 
@@ -32,6 +37,6 @@ app.listen( PORT, () =>
             console.log( "Server is connected to DB" );
             console.log( error );
         } );
-    
     console.log( "server is running" );
+
 } );
