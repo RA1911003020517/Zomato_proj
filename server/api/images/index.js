@@ -62,7 +62,7 @@ Router.post("/", upload.single("file"), async (req, res) => {
       ACL: "public-read", // Access Control List
     };
 
-    const uploadImage = await s3Upload(bucketOptions);
+      const uploadImage = await s3Upload( bucketOptions );
 
     const dbUpload = await ImageModel.create({
       images: [
@@ -72,7 +72,8 @@ Router.post("/", upload.single("file"), async (req, res) => {
       ],
     });
 
-    return res.status(200).json({ dbUpload });
+      return res.status( 200 ).json( { dbUpload } );
+      
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
