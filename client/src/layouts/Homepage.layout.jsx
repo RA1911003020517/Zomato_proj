@@ -1,14 +1,14 @@
 import React from 'react'
-//import Navbar from "../components/Navbar";
-//import FoodTab from "../components/Foodtab";
+import Navbar from "../components/Navbar";
+import FoodTab from "../components/FoodTab";
 
 const HomepageLayout = ( Component ) => ( { ...props } ) => {
   return (
     <>
       
-      {/*<Navbar />*/ }
+      <Navbar />
       
-      {/*<FoodTab/>*/ }
+      <FoodTab/>
 
       <div className='container mx-auto px-4 lg:px-20' >
         <component {...props}/>
