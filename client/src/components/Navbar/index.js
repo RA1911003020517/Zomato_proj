@@ -137,7 +137,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const user = {
-   // fullName: "Aditya",
+    fullName: "Aditya",
   };
 
   return (
