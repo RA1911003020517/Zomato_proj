@@ -28,14 +28,12 @@ function App() {
       <Route path="/:type" element={ <Home /> } />
       {/* <Route path="/restaurant/:id" element={ <RedirectRestaurant /> } /> */ }
       <Route path="/google/:token" element={ <GoogleAuth /> } />
-      <Route path="/restaurant/:id" element = {<Restaurant/>}>
-
-      <Route path="overview" element={ <Overview /> } />
-      <Route path="order-online" element={ <OrderOnline /> } />
-      <Route path="reviews" element={ <Reviews /> } />
-      <Route path="menu" element={ <Menu /> } />
-      <Route path="photos" element={ <Photos /> } />
-      
+      <Route path="/restaurant/:id" element={ <Restaurant /> }>
+        <Route path="overview" element={ <Overview /> } />
+        <Route path="order-online" element={ <OrderOnline /> } />
+        <Route path="reviews" element={ <Reviews /> } />
+        <Route path="menu" element={ <Menu /> } />
+        <Route path="photos" element={ <Photos /> } />
       </Route>
       <Route path="/checkout/orders" element={ <Checkout /> } />
     </Routes>

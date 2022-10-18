@@ -61,6 +61,7 @@ const MobileTabs = () => {
   );
 };
 
+
 const LargeTabs = () => {
   const [allTypes] = useState([
     {
@@ -151,7 +152,8 @@ const FoodTab = () => {
   return (
     <div>
       <MobileTabs />
-      <LargeTabs />
+      <LargeTabs/>
+      
     </div>
   );
 };
