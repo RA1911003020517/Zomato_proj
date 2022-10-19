@@ -3,7 +3,7 @@ import RestaurantCard from "../RestaurantCard";
 
 // components
 import DeliveryCarousel from "./DeliveryCarousel";
-import DeliveryCategoryCard from "./DeliveryCategoryCard";
+
 
 
 const Delivery = () => {
