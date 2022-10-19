@@ -16,10 +16,15 @@ const Home = () => {
   return (
     <>
       <div className="my-5 mb-20 md:mb-10">
-        {type === "delivery" && <Delivery />}
-        {type === "dining" && <Dining />}
-        {type === "night" && <NightLife />}
-        {type === "nutri" && <Nutrition />}
+        
+        { type === "delivery" && <Delivery /> }
+        
+        { type === "dining" && <Dining /> }
+        
+        { type === "night" && <NightLife /> }
+        
+        { type === "nutri" && <Nutrition /> }
+        
       </div>
     </>
   );
