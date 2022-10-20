@@ -3,6 +3,7 @@ import RestaurantCard from "../RestaurantCard";
 
 // components
 import DeliveryCarousel from "./DeliveryCarousel";
+import BrandCarousel from "./BrandCarousel";
 
 
 
@@ -55,7 +56,9 @@ const Delivery = () => {
 
   return (
     <>
+      
       <DeliveryCarousel />
+      <BrandCarousel/>
       <h1 className="text-xl mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold">
         Delivery Restaurants in Chennai
       </h1>
@@ -64,6 +67,7 @@ const Delivery = () => {
          <RestaurantCard {...restaurant} key={restaurant._id} />
        ))} 
       </div>
+      
     </>
   );
 };

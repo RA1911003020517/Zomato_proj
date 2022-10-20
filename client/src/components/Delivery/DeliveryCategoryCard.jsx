@@ -31,7 +31,7 @@ const DeliveryLgCard = ({ image, title }) => {
           />
         </div>
         <div>
-          <h3 className="text-sm my-1 text-center font-light">{title}</h3>
+          <h3 className="text-sm my-1 text-center font-dark">{title}</h3>
         </div>
       </div>
     </>
