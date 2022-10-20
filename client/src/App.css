@@ -3,7 +3,7 @@
 .diningSwiper .swiper-button-prev,
 .diningSwiper .swiper-button-next {
     top: 50%;
-    background: white;
+    background: rgb(237, 232, 232);
     border-radius: 100%;
     padding: 5px !important;
     width: 30px;
