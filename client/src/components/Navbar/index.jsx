@@ -62,7 +62,7 @@ const LargeNav = ({ user, isDropdownOpen, setIsDropdownOpen }) => {
   return (
     <div className="w-full items-center justify-between hidden lg:flex px-14">
       <div className="gap-4  items-center justify-around flex">
-        <div className="w-20">
+        <div className="w-28">
           <img
             src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png"
             alt="logo"

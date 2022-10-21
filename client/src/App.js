@@ -17,6 +17,7 @@ import OrderOnline from './components/Restaurants/OrderOnline';
 import Menu from './components/Restaurants/Menu';
 import Photos from './components/Restaurants/Photos';
 import Reviews from './components/Restaurants/Reviews';
+import RestaurantLayout from './layouts/Restaurant.layout';
 
 
 
@@ -28,7 +29,15 @@ function App() {
       <Route path="/:type" element={ <Home /> } />
       {/* <Route path="/restaurant/:id" element={ <RedirectRestaurant /> } /> */ }
       <Route path="/google/:token" element={ <GoogleAuth /> } />
-      <Route path="/restaurant/:id" element={ <Restaurant /> }>
+      
+       <Route
+          path="/restaurant/:id"
+          element={
+            <RestaurantLayout>
+              <Restaurant />
+            </RestaurantLayout>
+          }
+        >
         <Route path="overview" element={ <Overview /> } />
         <Route path="order-online" element={ <OrderOnline /> } />
         <Route path="reviews" element={ <Reviews /> } />
