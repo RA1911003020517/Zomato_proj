@@ -1,36 +1,40 @@
-
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
+// pages
+import Checkout from "./pages/Checkout.page";
+import GoogleAuth from "./pages/GoogleAuth.page";
+import Home from "./pages/Home.page";
+import Restaurant from "./pages/Restaurant.page";
 
-//pages
-import Checkout from './pages/Checkout.page';
-import GoogleAuth from './pages/GoogleAuth.page';
-import Home from './pages/Home.page';
-import Restaurant from './pages/Restaurant.page';
+// components
+import Overview from "./components/Restaurants/Overview";
+import OrderOnline from "./components/Restaurants/OrderOnline";
+import Menu from "./components/Restaurants/Menu";
+import Reviews from "./components/Restaurants/Reviews";
+import Photos from "./components/Restaurants/Photos";
+import RestaurantLayout from "./layouts/Restaurant.layout";
 
-
-
-//components
-import Overview from './components/Restaurants/Overview';
-import OrderOnline from './components/Restaurants/OrderOnline';
-import Menu from './components/Restaurants/Menu';
-import Photos from './components/Restaurants/Photos';
-import Reviews from './components/Restaurants/Reviews';
-import RestaurantLayout from './layouts/Restaurant.layout';
-
-
-
+// redux
+import { useDispatch } from "react-redux";
+import { getMySelf } from "./redux/reducers/user/user.action";
 
 function App() {
-  return ( <>
-    <Routes>
-      <Route path="/" element={ <Navigate to="/delivery" /> } />
-      <Route path="/:type" element={ <Home /> } />
-      {/* <Route path="/restaurant/:id" element={ <RedirectRestaurant /> } /> */ }
-      <Route path="/google/:token" element={ <GoogleAuth /> } />
-      
-       <Route
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMySelf());
+  }, [localStorage]);
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Navigate to="/delivery" />} />
+        <Route path="/:type" element={<Home />} />
+        {/* <Route path="/restaurant/:id" element={<RedirectRestaurant />} /> */}
+        <Route path="/google/:token" element={<GoogleAuth />} />
+        <Route
           path="/restaurant/:id"
           element={
             <RestaurantLayout>
@@ -38,15 +42,15 @@ function App() {
             </RestaurantLayout>
           }
         >
-        <Route path="overview" element={ <Overview /> } />
-        <Route path="order-online" element={ <OrderOnline /> } />
-        <Route path="reviews" element={ <Reviews /> } />
-        <Route path="menu" element={ <Menu /> } />
-        <Route path="photos" element={ <Photos /> } />
-      </Route>
-      <Route path="/checkout/orders" element={ <Checkout /> } />
-    </Routes>
-  </>
+          <Route path="overview" element={<Overview />} />
+          <Route path="order-online" element={<OrderOnline />} />
+          <Route path="reviews" element={<Reviews />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="photos" element={<Photos />} />
+        </Route>
+        <Route path="/checkout/orders" element={<Checkout />} />
+      </Routes>
+    </>
   );
 }
 
