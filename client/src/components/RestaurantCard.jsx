@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AiTwotoneStar } from "react-icons/ai";
 
+// redux
+import { useDispatch } from "react-redux";
+import { getImage } from "../redux/reducers/image/image.action";
+
 const RestaurantCard = (props) => {
   const [image, setImage] = useState({
-    images: [
-      {
-        location:
-          "https://b.zmtcdn.com/data/pictures/chains/4/584/bdab27a41125cd45ddf814c7fad470b2_o2_featured_v2.jpg",
-      },
-    ],
+    images: [],
   });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch( getImage( props.photos ) ).then( ( data ) =>
+    {
+      
+      const images = data.payload.images;
+      setImage((prev) => ({ ...prev, images }));
+    });
+  }, [props.photos]);
 
   return (
     <Link
@@ -21,18 +31,16 @@ const RestaurantCard = (props) => {
         <div className="w-full relative">
           <div className="w-full bottom-4 flex items-end justify-between">
             <div className="flex flex-col gap-2 items-start absolute">
-              { props.isPro && (
+              {props.isPro && (
                 <span className="bg-zomato-400 text-white px-2 py-1 rounded text-sm">
                   Pro extra 10% off
                 </span>
-                          ) }
-                          
-              { props.isOff && (
+              )}
+              {props.isOff && (
                 <span className="bg-blue-600 text-white px-2 py-1 rounded text-sm">
                   $250 OFF
                 </span>
-                          ) }
-                          
+              )}
             </div>
             <img
               src={image.images.length && image.images[0].location}

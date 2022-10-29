@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { IoMdArrowDropright } from "react-icons/io";
-import ReactStars from "react-rating-stars-component";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
@@ -13,42 +12,41 @@ import MenuSimilarRestaurantCard from "./MenuSimilarRestaurantCard";
 import ReviewCard from "../Reviews/ReviewCard";
 import MapView from "./MapView";
 
+// redux
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+
 const Overview = () => {
-  const [restaurant, setRestaurant] = useState({
-    _id: "124ksjf435245jv34fg3",
-    isPro: true,
-    isOff: true,
-    name: "Nathu's Sweets",
-    restaurantReviewValue: "3.7",
-    cuisine: [
-      "Mithai",
-      "South Indian",
-      "Chinese",
-      "Street Food",
-      "Fast Food",
-      "Desserts",
-      "North Indian",
-    ],
-    averageCost: "450",
-  });
+  const [restaurant, setRestaurant] = useState({ cuisine: [] });
+
+  const reduxState = useSelector(
+    (globalState) => globalState.restaurant.selectedRestaurant.restaurant
+  );
+
+  useEffect(() => {
+    if (reduxState) {
+      setRestaurant(reduxState);
+    }
+  }, [reduxState]);
+
   const [menuImages, setMenuImages] = useState([
     "https://b.zmtcdn.com/data/menus/931/931/d40e86a957d1ed6e6fabe5a67a161904.jpg",
     "https://b.zmtcdn.com/data/menus/931/931/36f8a3b9e5dbf6435f903c9a8745bcc8.jpg",
     "https://b.zmtcdn.com/data/menus/931/931/8d6623791860b054953b6c2c14d61bcb.jpg",
     "https://b.zmtcdn.com/data/menus/931/931/6d462a04051c0eabb0067149aa84cc64.jpg",
   ]);
-  const [ reviews, setReviews ] = useState( [ 
-        {
-      rating: 3.7,
+  const [reviews, setReviews] = useState([
+    {
+      rating: 3.5,
       isRestaurantReview: false,
-      createdAt: "Fri Oct 21 2022 20:20:34 GMT+0530 (India Standard Time)",
-      reviewText: "Delivery delay.",
+      createdAt: "Fri Oct 14 2022 20:20:34 GMT+0530 (India Standard Time)",
+      reviewText: "Very bad experience.",
     },
     {
-      rating: 4.2,
+      rating: 4.5,
       isRestaurantReview: false,
-      createdAt: "Fri Oct 20 2022 20:19:34 GMT+0530 (India Standard Time)",
-      reviewText: "Very good food and nice taste.",
+      createdAt: "Fri Oct 14 2022 20:19:34 GMT+0530 (India Standard Time)",
+      reviewText: "Very good experience.",
     },
   ]);
   const { id } = useParams;
@@ -127,8 +125,7 @@ const Overview = () => {
 
         <div className="flex flex-col-reverse">
           <div className="my-4">
-            <h4 className="text-lg font-medium">
-          {restaurant.name} Reviews</h4>
+            <h4 className="text-lg font-medium">{restaurant.name} Reviews</h4>
             {/* <ReactStars
               count={5}
               onChange={(newRating) => console.log(newRating)}
@@ -170,21 +167,22 @@ const Overview = () => {
             <MapView
               title="McDonald's"
               phno="+193423542345"
-              mapLocation={getLatLong("13.103014976191385, 80.17488550823708")}
-              address="H-5/6, Plaza vadapalani, Forom Vijay Mall, Chennai"
+              mapLocation={getLatLong("28.64121406271755, 77.21955482132051")}
+              address="H-5/6, Plaza Building, Connaught Place, New Delhi"
             />
           </div>
         </div>
       </div>
       <aside
         style={{ height: "fit-content" }}
-        className="hidden md:flex md:w-4/12 sticky rounded-xl top-20 bg-white py-4 px-3 shadow-md flex-col gap-4"
+        className="hidden md:flex md:w-4/12 sticky rounded-xl top-20 bg-white py-4 px-4 shadow-md flex-col gap-4"
       >
         <MapView
           title="McDonald's"
           phno="+193423542345"
-          mapLocation={getLatLong("13.103014976191385, 80.17488550823708")}
-          address="H-5/6, Plaza vadapalani, Forom Vijay Mall, Chennai"
+          mapLocation={getLatLong("28.64121406271755, 77.21955482132051")}
+          latAndLong={"28.64121406271755, 77.21955482132051"}
+          address="H-5/6, Plaza Building, Connaught Place, New Delhi"
         />
       </aside>
     </div>
@@ -192,3 +190,19 @@ const Overview = () => {
 };
 
 export default Overview;
+
+// _id: "124ksjf435245jv34fg3",
+//     isPro: true,
+//     isOff: true,
+//     name: "Nathu's Sweets",
+//     restaurantReviewValue: "3.7",
+//     cuisine: [
+//       "Mithai",
+//       "South Indian",
+//       "Chinese",
+//       "Street Food",
+//       "Fast Food",
+//       "Desserts",
+//       "North Indian",
+//     ],
+//     averageCost: "450",
