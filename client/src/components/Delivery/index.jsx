@@ -3,6 +3,7 @@ import RestaurantCard from "../RestaurantCard";
 
 // components
 import DeliveryCarousel from "./DeliveryCarousel";
+import BrandCarousel from "./BrandCarousel";
 
 // redux
 import { useSelector } from "react-redux";
@@ -21,6 +22,7 @@ const Delivery = () => {
   return (
     <>
       <DeliveryCarousel />
+      <BrandCarousel/>
       <h1 className="text-xl mt-4 mb-2 md:mt-8 md:text-3xl md:font-semibold">
         Delivery Restaurants in NCR (Delhi)
       </h1>

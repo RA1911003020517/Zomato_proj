@@ -7,7 +7,7 @@ export const getImage = (_id) => async (dispatch) => {
   try {
     const image = await axios({
       method: "GET",
-      url: `http://localhost:4000/image/${_id}`,
+      url: `http://localhost:4000/images/${_id}`,
     });
 
     return dispatch({ type: GET_IMAGE, payload: image.data.image });
