@@ -10,7 +10,8 @@ export const getFood = (foodId) => async (dispatch) => {
     });
 
     return dispatch({ type: GET_FOOD, payload: Food.data });
-  } catch (error) {
+  } catch ( error ) 
+  {
     dispatch({ type: "ERROR", payload: error });
   }
 };
