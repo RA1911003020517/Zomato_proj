@@ -3,23 +3,18 @@ import { TiStarFullOutline } from "react-icons/ti";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-
 dayjs.extend(relativeTime);
 
-
-
 const ReviewCard = (props) => {
-  const [user, setUser] = useState("Somu Reddy");
+  const [user, setUser] = useState("Aditya");
 
-
-  
   return (
     <div className="my-3 flex flex-col gap-3 pb-4 border-b border-gray-300">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrZNG2V1kv_IH_8aTfCrLyEYKVDuCeuKoHaQ&usqp=CAU"
+              src="/images/avatar.png"
               alt="avatar"
               className="w-full h-full rounded-full object-cover"
             />
