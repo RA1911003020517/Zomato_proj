@@ -7,7 +7,7 @@ export const getUser = (_id) => async (dispatch) => {
   try {
     const User = await axios({
       method: "GET",
-      url: `http://localhost:4000/user/${_id}`,
+      url: `${process.env.REACT_APP_CLIENT_URL}user/${_id}`,
     });
 
     return dispatch({ type: GET_USER, payload: User.data });
@@ -20,10 +20,8 @@ export const getMySelf = () => async (dispatch) => {
   try {
     const User = await axios({
       method: "GET",
-      url: `http://localhost:4000/user/`,
+      url: `${process.env.REACT_APP_CLIENT_URL}user/`,
     });
-
-    console.log(User.data.user);
 
     return dispatch({ type: SELF, payload: { ...User.data.user } });
   } catch (error) {
